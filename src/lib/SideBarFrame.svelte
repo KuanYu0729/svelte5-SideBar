@@ -4,13 +4,13 @@
 	import type { Menu } from "../interface/Menu";
 	let {
 		open = $bindable(),
-		showMenu,
+		showMenu = true,
 		menuList,
 		children,
 		onChoose,
 	}: {
 		open?: boolean;
-		showMenu: boolean;
+		showMenu?: boolean;
 		menuList?: Menu[];
 		children?: Snippet;
 		onChoose?: (key: string) => void;
@@ -69,6 +69,10 @@
 		position: relative;
 		width: 100%;
 		height: 100%;
+		box-sizing: border-box;
+		:global(*) {
+			box-sizing: border-box;
+		}
 		.header {
 			display: flex;
 			flex-direction: row;
@@ -90,33 +94,33 @@
 			flex-direction: column;
 			flex: 1;
 		}
-	}
-	.side-bar {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		background-color: var(--side-menu-bg-color, #e5e7eb);
-		--side-menu-shadow: 0 10px 15px -3px var(--side-menu-shadow-color, rgb(0 0 0 /
-							0.1)),
-			0 4px 6px -4px var(--side-menu-shadow-color, rgb(0 0 0 / 0.1));
-		box-shadow: var(--side-menu-inset-shadow),
-			var(--side-menu-inset-ring-shadow), var(--side-menu-ring-offset-shadow),
-			var(--side-menu-ring-shadow), var(--side-menu-shadow);
-		left: -100%;
-		border-right: 2px solid #000000;
-		transition: left 0.3s ease-in-out;
-		&.open {
-			left: 0px;
-		}
-		.side-bar-menu {
-			padding: 3rem;
-			font-size: 20px;
-			line-height: 1.4;
-			gap: 0.5rem;
-			display: flex;
-			flex-direction: column;
-			.item {
-				cursor: pointer;
+		.side-bar {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			background-color: var(--side-menu-bg-color, #e5e7eb);
+			--side-menu-shadow: 0 10px 15px -3px var(--side-menu-shadow-color, rgb(0 0
+								0 / 0.1)),
+				0 4px 6px -4px var(--side-menu-shadow-color, rgb(0 0 0 / 0.1));
+			box-shadow: var(--side-menu-inset-shadow),
+				var(--side-menu-inset-ring-shadow), var(--side-menu-ring-offset-shadow),
+				var(--side-menu-ring-shadow), var(--side-menu-shadow);
+			left: -110%;
+			border-right: 2px solid #000000;
+			transition: left 0.3s ease-in-out;
+			&.open {
+				left: 0px;
+			}
+			.side-bar-menu {
+				padding: 3rem;
+				font-size: 20px;
+				line-height: 1.4;
+				gap: 0.5rem;
+				display: flex;
+				flex-direction: column;
+				.item {
+					cursor: pointer;
+				}
 			}
 		}
 	}
