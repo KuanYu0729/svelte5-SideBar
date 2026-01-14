@@ -6,11 +6,15 @@
   "main": "dist/bundle.cjs.js",
   "module": "dist/bundle.esm.js",
   "types": "dist/types/export.d.ts",
+  "license": "MIT",
   "exports": {
     ".": {
       "import": "./dist/bundle.esm.js",
       "require": "./dist/bundle.cjs.js"
     }
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "files": [
     "dist",
@@ -22,7 +26,8 @@
     "build": "vite build && npm run build:types",
     "build:types": "tsc -p tsconfig.types.json",
     "preview": "vite preview",
-    "check": "svelte-check --tsconfig ./tsconfig.app.json && tsc -p tsconfig.node.json"
+    "check": "svelte-check --tsconfig ./tsconfig.app.json && tsc -p tsconfig.node.json",
+    "prepublishOnly": "npm run check && npm run build && npm pack --dry-run"
   },
   "peerDependencies": {
     "svelte": "^5.43.8"
