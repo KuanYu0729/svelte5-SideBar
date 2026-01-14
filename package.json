@@ -1,13 +1,31 @@
 {
   "name": "svelte-side-bar",
-  "private": true,
-  "version": "0.0.0",
+  "private": false,
+  "version": "0.1.0",
   "type": "module",
+  "main": "dist/bundle.cjs.js",
+  "module": "dist/bundle.esm.js",
+  "types": "dist/types/export.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/bundle.esm.js",
+      "require": "./dist/bundle.cjs.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && npm run build:types",
+    "build:types": "tsc -p tsconfig.types.json",
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.app.json && tsc -p tsconfig.node.json"
+  },
+  "peerDependencies": {
+    "svelte": "^5.43.8"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^6.2.1",
