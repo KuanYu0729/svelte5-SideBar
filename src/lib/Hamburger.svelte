@@ -26,6 +26,7 @@
 		cursor: pointer;
 		color: var(--hamburger-text-color, #6a7282);
 		z-index: 20;
+		background-color: transparent;
 		&:hover {
 			color: var(--hamburger-text-color, #364153);
 		}
